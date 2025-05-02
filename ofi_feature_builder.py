@@ -28,4 +28,22 @@ def integrated_ofi(multi_df):
     w /= np.abs(w).sum()
     scores = (multi_df.fillna(0.0).values @ w).ravel()
     return pd.Series(scores, index=multi_df.index, name = "ofi_int")
+
+
+def cross_asset_ofi(integrated, returns, target):
+    X_full = pd.concat(integrated, axis=1).sort_index()
+    y_full = returns[target].reindex_like(X_full)
+    X_oth = X_full.drop(columns=target, level=0)
+
+    preds = pd.Series(index=X_oth.index, dtype = float, name = "ofi_cross")
+
+    for blk, X_blk in X_oth.groupby(pd.Grouper(freq=BLOCK)):
+        if len(X_blk) < CV_FOLDS:
+            continue
+
+        y_blk = y_full.loc[X_blk.index]
+        model = LassoCV(cv=CV_FOLDS, fit_intercept = True, n_jobs = -1, max_iter = 10000).fit(X_blk, y_blk)
+        preds.loc[X_blk.index] = model.predict(X_blk)
+
+    return preds
     
