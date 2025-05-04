@@ -2,7 +2,7 @@
 Order Flow Imbalance (OFI) Feature Generator
 ===========================================
 
-This repository contains `ofi_features.py`, a self‑contained utility that extracts four flavours of Order‑Flow‑Imbalance (OFI) features on 1‑minute bars from event‑level limit‑order‑book data.  The implementation follows – and slightly extends – the methodology introduced in *Bormetti, Potters & Rindi (2023) “Cross‑Impact of Order Flow Imbalance in Equity Markets”.*
+This repository contains `ofi_pipeline.py`, a self‑contained utility that extracts four flavours of Order‑Flow‑Imbalance (OFI) features on 1‑minute bars from event‑level limit‑order‑book data.  The implementation follows – and slightly extends – the methodology introduced in *Bormetti, Potters & Rindi (2023) “Cross‑Impact of Order Flow Imbalance in Equity Markets”.*
 
 --------------------------------------------------------------------
 1.  Background & Motivation
