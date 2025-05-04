@@ -12,7 +12,7 @@ The original paper shows that **signed order‑book pressure** (OFI) is a strong
 - Constructing OFI at **multiple depth levels**, not just at the best quotes.
 - Using **Lasso regression** to estimate sparse cross‑impact coefficients in a large asset universe.
 
-Our script reproduces the feature engineering part of that pipeline so the downstream modelling (OLS, Lasso, VAR, …) can be plugged in seamlessly.
+The script reproduces the feature engineering part of that pipeline so the downstream modelling (OLS, Lasso, VAR, …) can be plugged in seamlessly.
 
 --------------------------------------------------------------------
 2.  Feature Definitions
