@@ -1,5 +1,4 @@
 # PattenLaneQuantResearchRepo
-"""
 Order Flow Imbalance (OFI) Feature Generator
 ===========================================
 
@@ -79,32 +78,7 @@ symbol, ts_bar, ofi_best, ofi_lvl1 … lvl10, ofi_integrated, integrated_weights
 ```
 
 --------------------------------------------------------------------
-5.  Link to the Paper
+5.  Limitations & TODOs
 --------------------------------------------------------------------
-*Bormetti, Potters & Rindi (2023)* build their predictive regressions with exactly these four feature families.  In particular:
-
-1. **Motivation for multi‑level OFI**: deeper layers capture *latent liquidity* and *quote revisions* that are invisible at the touch, improving explanatory power.
-2. **Why Lasso instead of OLS**: cross‑impact matrix is high‑dimensional (N×N); Lasso shrinks noise coefficients to zero, combating multicollinearity and over‑fitting.
-3. **OFI vs. Volume**: trades convey limited information when order splitting & hidden liquidity dominate; OFI reacts instantaneously to *all* book updates, hence shows higher contemporaneous R².
-
---------------------------------------------------------------------
-6.  Limitations & TODOs
---------------------------------------------------------------------
-- **Memory**: current implementation loads the entire file into RAM; a chunked variant would handle full‑day ITCH.
 - **Extreme illiquidity**: when both sides are empty for a minute, depth normalisation can produce large numbers; consider post‑processing winsorisation.
 - **Calendar effects**: the script assumes continuous trading; if the venue has auctions or halts you may wish to drop those intervals.
-
---------------------------------------------------------------------
-7.  Directory Layout (recommended)
---------------------------------------------------------------------
-```
-.
-├── data/            # raw + processed csvs
-├── ofi_features.py  # main script
-└── README.md        # this file
-```
-
---------------------------------------------------------------------
-Author: Patten Lane
-Last updated: 3 May 2025
-"""
